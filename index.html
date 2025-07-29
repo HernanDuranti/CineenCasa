@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineEnCasa - Tu sala de cine en casa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .hero {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%), 
+                        url('images/elio1.jpg') no-repeat center center;
+            background-size: cover;
+            height: 70vh;
+            position: relative;
+        }
+        
+        .movie-card {
+            transition: all 0.3s ease;
+        }
+        
+        .movie-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        
+        .movie-card:hover .overlay {
+            opacity: 1;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .player-container {
+            background: #000;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+        }
+        
+        .player-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-black bg-opacity-80 fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-red-600 text-3xl font-bold">CineEnCasa</h1>
+            </div>
+            <div>
+                <input type="text" placeholder="Buscar películas..." class="bg-gray-800 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-red-600">
+            </div>
+            <div>
+                <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition duration-300">Iniciar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center">
+        <div class="text-center px-6">
+            <h1 class="text-5xl font-bold mb-6">Disfruta del cine en tu casa</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">La mejor selección de películas al alcance de un clic</p>
+            <div class="flex justify-center gap-4">
+                <button class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full text-lg transition duration-300">Reproducir ahora</button>
+                <button class="bg-gray-700 hover:bg-gray-600 text-white px-8 py-3 rounded-full text-lg transition duration-300">Más información</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <main class="container mx-auto px-6 pb-16 mt-12">
+        <!-- Películas populares -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Películas populares</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Película 1 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/tiposmalos.jpg" alt="Poster de película de acción con protagonista corriendo entre explosiones" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Los tipos malos 2</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                <!-- Película 2 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/superman.jpg" alt="Poster de comedia romántica con pareja abrazándose bajo la lluvia" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Superman</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                <!-- Película 3 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/jurassicworld.jpg" alt="Poster de ciencia ficción con nave espacial volando sobre planeta futurista" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Jurassic world</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                <!-- Película 4 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/loscuatrofantasticos.jpg" alt="Poster de terror con casa abandonada iluminada por luna llena" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Los 4 Fantasticos</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                <!-- Película 5 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/verano.jpg" alt="Poster de documental sobre naturaleza con elefante en la sabana" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Se lo que hicieron</h3>
+                        <h4 class="text-xl font-bold mb-2">el verano pasado</h4>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Estrenos -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Nuevos estrenos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Película 6 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/elnoviodemama.jpg" alt="Poster de película de superhéroes con protagonista volando sobre ciudad" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">El novio de mama</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                 <!-- Película 7 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/exterminio.jpg" alt="Poster de película animada familiares con personajes coloridos" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Exterminio</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                <!-- Película 8 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/elio.jpg" alt="Poster de thriller psicológico con protagonista mirando al vacío" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Elio</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                <!-- Película 9 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/horadeladesaparicion.jpg" alt="Poster de drama histórico con castillo medieval al fondo" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">La hora de</h3>
+                        <h4 class="text-xl font-bold mb-2">la desaparicion</h4>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+                
+                <!-- Película 10 -->
+                <div class="movie-card relative rounded-lg overflow-hidden shadow-lg cursor-pointer" >
+                    <img src="images/elritual.jpg" alt="Poster de musical con escenario de Broadway iluminado" class="w-full h-full object-cover">
+                    <div class="overlay">
+                        <h3 class="text-xl font-bold mb-2">Exorxismo EL RITUAL</h3>
+                        <button class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition duration-300">Reproducir</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Categorías -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6">Explorar por categorías</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="category-card bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-700 transition duration-300 text-center py-4">
+                    <div class="text-red-500 text-3xl mb-2">🎬</div>
+                    <h3 class="text-lg font-semibold">Acción</h3>
+                </div>
+                <div class="category-card bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-700 transition duration-300 text-center py-4">
+                    <div class="text-red-500 text-3xl mb-2">❤️</div>
+                    <h3 class="text-lg font-semibold">Romance</h3>
+                </div>
+                <div class="category-card bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-700 transition duration-300 text-center py-4">
+                    <div class="text-red-500 text-3xl mb-2">👻</div>
+                    <h3 class="text-lg font-semibold">Terror</h3>
+                </div>
+                <div class="category-card bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-700 transition duration-300 text-center py-4">
+                    <div class="text-red-500 text-3xl mb-2">🤣</div>
+                    <h3 class="text-lg font-semibold">Comedia</h3>
+                </div>
+                <div class="category-card bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-700 transition duration-300 text-center py-4">
+                    <div class="text-red-500 text-3xl mb-2">🚀</div>
+                    <h3 class="text-lg font-semibold">Ciencia Ficción</h3>
+                </div>
+                <div class="category-card bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-700 transition duration-300 text-center py-4">
+                    <div class="text-red-500 text-3xl mb-2">🕵️</div>
+                    <h3 class="text-lg font-semibold">Suspenso</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-90 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-red-600 mb-4">CineEnCasa</h3>
+                    <p class="text-gray-400">La mejor experiencia cinematográfica en la comodidad de tu hogar.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces útiles</h4>
+                    <ul class="text-gray-400">
+                        <li class="mb-2"><a href="#" class="hover:text-white">Inicio</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Películas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="text-gray-400">
+                        <li class="mb-2"><a href="#" class="hover:text-white">Términos de servicio</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Política de privacidad</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">DMCA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <ul class="text-gray-400">
+                        <li class="mb-2"><a href="#" class="hover:text-white">Soporte</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Twitter</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>© 2025 CineEnCasa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reproductor (oculto por defecto) -->
+    <div id="playerModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+        <div class="w-full max-w-6xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="movieTitle" class="text-xl font-bold"></h2>
+                <button onclick="closePlayer()" class="text-white hover:text-red-500 text-3xl">&times;</button>
+            </div>
+            <div class="player-container">
+                <iframe id="moviePlayer" class="player-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function openMovie(url) {
+            window.open(url, '_blank');
+        }
+        
+        
+        function showPlayer(title, url) {
+            document.getElementById('movieTitle').textContent = title;
+            document.getElementById('moviePlayer').src = url;
+            document.getElementById('playerModal').classList.remove('hidden');
+        }
+        
+        
+        function closePlayer() {
+            document.getElementById('moviePlayer').src = '';
+            document.getElementById('playerModal').classList.add('hidden');
+        }
+        
+       
+        document.getElementById('playerModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePlayer();
+            }
+        });
+    </script>
+</body>
+</html>
